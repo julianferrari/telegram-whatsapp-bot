@@ -1,0 +1,47 @@
+TELEGRAM
+
+1. PARA OBTENER EL TOKEN DEL BOT:
+
+Entrar en la aplicacion de Telegram. En el buscador de contactos escribir: @botfather y elegir el que dice BotFather (con un Padrino robot)
+
+Escribirle un chat que diga: /start
+BotFather va a mostrar todos los comandos que podes usar.
+
+Creamos un nuevo bot: /newbot
+A continuación nos pide un nombre para el bot: "Bot de Chat"
+Luego nos pide un nick para el bot: "chat_bot" por ejemplo
+Si ese nick ya existe te va a solicitar otro.
+
+Una vez definido el nick te va a dar el token!!!
+
+
+2. PARA OBTENER EL ID DE UN TELEFONO:
+
+Entrar en: https://api.telegram.org/bot<TOKEN>/getUpdates y reemplazar <TOKEN> por nuestro "token".
+Esta api te muestra el trafico de mensajes para el bot creado.
+
+Volvé a la aplicación de Telegram y busca: @nick_del_bot (Por ejemplo: @chat_bot)
+Escribile un mensaje cualquiera "hola". Volvé a la página web, refrescá y vas a ver un texto como:
+
+{"ok":true,"result":[
+{"update_id":aaaaaaaaa,
+"message":{"message_id":1291,"from":{"id":bbbbbbbbb,"is_bot":false,"first_name":"julian","last_name":"ferrari","language_code":"es"},"chat":{"id":bbbbbbbbb,"first_name":"julian","last_name":"ferrari","type":"private"},"date":cccccccccc,"text":"Hola"}}]}
+
+Tiene varios campos, pero donde dice: "id":bbbbbbbbb es donde está el id del teléfono que mandó el mensaje.
+
+Si se quiere, se puede agregar el bot a un grupo de amigos. Luego se manda al grupo un mensaje como /start, para que el bot responda algo.
+(le tuve q mandar un mensaje ficticio al bot dentro del grupo (arrobandolo))
+En la página de la api, se verá algo como:
+
+{"ok":true,"result":[
+{"update_id":aaaaaaaaa,
+"message":{"message_id":1291,"from":{"id":bbbbbbbbb,"is_bot":false,"first_name":"julian","last_name":"ferrari","language_code":"es"},"chat":{"id":bbbbbbbbb,"first_name":"julian","last_name":"ferrari","type":"private"},"date":cccccccccc,"text":"Hola"}},
+{"update_id":aaaaaaaa1,
+"message":{"message_id":1292,"from":{"id":bbbbbbbbb,"is_bot":false,"first_name":"julian","last_name":"ferrari","language_code":"es"},"chat":{"id":-xxxxxxxxx,"title":"chat_bot","type":"group","all_members_are_administrators":true},"date":dddddddddd,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}}]}
+
+Se observa el "hola" anterior con el id de tu teléfono, pero abajo ahora aparece el mensaje "/start", y el nuevo id es "id":-xxxxxxxxx.
+Este es el id del grupo.
+
+------------------------------------------------------------
+En python, instalar la librería Telepot (https://telepot.readthedocs.io/en/latest/)
+------------------------------------------------------------
